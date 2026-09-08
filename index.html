@@ -2,7 +2,7 @@
 layout: default
 ---
 <section aria-labelledby="posts-heading">
-  <h1 class="section-title" id="posts-heading">文章</h1>
+  <h1 class="section-title" id="posts-heading">Notes</h1>
   {% if site.posts.size > 0 %}
   <ul class="post-list">
     {% for post in site.posts %}
@@ -13,6 +13,6 @@ layout: default
     {% endfor %}
   </ul>
   {% else %}
-  <p class="empty-state">暂无文章。</p>
+  <p class="empty-state">Nothing is here.</p>
   {% endif %}
 </section>
