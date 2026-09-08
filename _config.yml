@@ -1,6 +1,6 @@
 title: Toe's blog
 description: what I'm playing with
-lang: zh-CN
+lang: en
 url: https://zjutoe.github.io
 baseurl: ""
 permalink: /posts/:title/
