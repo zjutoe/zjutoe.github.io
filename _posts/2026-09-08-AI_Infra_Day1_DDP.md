@@ -1,5 +1,5 @@
 ---
-title: AI Infra Day1 Distributed Data Parallel (DDP)
+title: "AI Infra Day1 Distributed Data Parallel (DDP)"
 ---
 # 第一版：手动DDP
 - 多进程启动：torchrun，每个进程对应一个rank，rank有global rank id、local rank id。所有rank属于同一个process group。
