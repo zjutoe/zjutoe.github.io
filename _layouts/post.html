@@ -1,0 +1,15 @@
+---
+layout: default
+---
+<article>
+  <header class="post-header">
+    <h1>{{ page.title | escape }}</h1>
+    <time class="post-date" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y-%m-%d' }}</time>
+  </header>
+  <div class="prose">
+    {{ content }}
+  </div>
+</article>
+<nav class="post-navigation" aria-label="文章导航">
+  <a href="{{ '/' | relative_url }}">← 所有文章</a>
+</nav>

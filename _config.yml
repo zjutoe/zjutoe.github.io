@@ -1,3 +1,18 @@
-theme: jekyll-theme-minimal
-title: Toe's homepage
-description: what I'm playing around with
+title: Toe's blog
+description: 技术、实践与日常笔记。
+lang: zh-CN
+url: https://zjutoe.github.io
+baseurl: ""
+permalink: /posts/:title/
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+exclude:
+  - README.md
