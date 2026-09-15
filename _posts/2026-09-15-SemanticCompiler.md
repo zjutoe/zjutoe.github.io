@@ -1,5 +1,5 @@
 ---
-title: 语义编译器（Semantic Compiler）
+title: Semantic Compiler - 语义编译器
 ---
 
 自然语言智能体能力强大，但指令并不是稳定的接口：语义等价的请求可能产生
