@@ -1,0 +1,10 @@
+{% assign versions = include.posts | sort: 'lang' | reverse %}
+<nav class="post-languages" aria-label="{{ site.data.languages[include.lang].translations }}">
+  {% for version in versions %}
+    {% if version.url == include.current_url %}
+  <span lang="{{ version.lang }}" aria-current="page">{{ site.data.languages[version.lang].label }}</span>
+    {% else %}
+  <a href="{{ version.url | relative_url }}" lang="{{ version.lang }}" hreflang="{{ version.lang }}" rel="alternate" title="{{ version.title | escape }}">{{ site.data.languages[version.lang].label }}</a>
+    {% endif %}
+  {% endfor %}
+</nav>

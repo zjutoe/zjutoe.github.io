@@ -1,14 +1,21 @@
 ---
 layout: default
+lang: en
 ---
 <section aria-labelledby="posts-heading">
   <h1 class="section-title" id="posts-heading">Notes</h1>
   {% if site.posts.size > 0 %}
   <ul class="post-list">
-    {% for post in site.posts %}
+    {% assign post_groups = site.posts | group_by: 'translation_key' %}
+    {% for group in post_groups %}
+    {% assign chinese_post = group.items | where: 'lang', 'zh-CN' | first %}
+    {% assign post = chinese_post | default: group.items.first %}
     <li>
       <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y-%m-%d' }}</time>
-      <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+      <div>
+        <a href="{{ post.url | relative_url }}" lang="{{ post.lang }}">{{ post.title | escape }}</a>
+        {% include post-languages.html posts=group.items lang=page.lang %}
+      </div>
     </li>
     {% endfor %}
   </ul>

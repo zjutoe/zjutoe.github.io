@@ -21,6 +21,8 @@ a:focus-visible { outline: 2px solid #245b91; outline-offset: 4px; }
 .post-list li { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 20px; margin: 20px 0; line-height: 1.7; }
 .post-list a { color: inherit; text-decoration: none; overflow-wrap: anywhere; }
 .post-list a:hover { text-decoration: underline; }
+.post-languages { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; font-size: 13px; }
+.post-languages [aria-current="page"] { color: #666; }
 .post-date { color: #666; font-size: 14px; font-variant-numeric: tabular-nums; line-height: 1.95; }
 .empty-state { color: #666; line-height: 1.8; }
 .post-header { margin-bottom: 32px; }

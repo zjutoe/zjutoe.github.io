@@ -1,0 +1,12 @@
+zh-CN:
+  label: 中文
+  skip_to_content: 跳到正文
+  all_posts: ← 所有文章
+  translations: 文章语言
+  post_navigation: 文章导航
+en:
+  label: English
+  skip_to_content: Skip to content
+  all_posts: ← All posts
+  translations: Article languages
+  post_navigation: Post navigation

@@ -4,18 +4,50 @@
 
 ## 写文章
 
-在 `_posts/` 下新建 `YYYY-MM-DD-slug.md`，例如 `_posts/2026-09-08-first-note.md`：
+每篇文章的中英文版本分别保存为 `.md`，通过相同的 `translation_key` 关联。例如：
+
+```text
+_posts/
+  2026-09-17-first-note-zh.md
+  2026-09-17-first-note-en.md
+```
+
+中文版：
 
 ```markdown
 ---
 title: 第一篇技术笔记
 description: 文章的简短介绍。
+lang: zh-CN
+translation_key: first-note
+permalink: /posts/first-note/
 ---
 
 正文使用 Markdown，支持标题、列表、代码块、图片和表格。
 ```
 
-文章自动按日期倒序出现在首页，默认使用文章排版。文件名日期为发布日期，未来日期的文章默认不显示。
+英文版：
+
+```markdown
+---
+title: My First Technical Note
+description: A short description of the article.
+lang: en
+translation_key: first-note
+permalink: /en/posts/first-note/
+---
+
+Write the English article here.
+```
+
+- 每个版本都必须填写 `title`、`lang`、`translation_key` 和 `permalink`；`description` 可选。
+- `translation_key` 是文章的稳定标识，同一篇文章的两个版本必须一致，不同文章不能复用。同一标识下，每种语言只能有一个版本。
+- 目前支持 `zh-CN` 和 `en`。两个版本使用相同的文件名日期（原文发布日期），翻译或修订时保留该日期，避免改变首页排序。
+- 中文 URL 使用 `/posts/<slug>/`，英文使用 `/en/posts/<slug>/`。URL 必须唯一；已有文章保留原文件名和 URL，不需要添加 `-zh` 后缀。
+- 首页按日期倒序排列，每篇文章只出现一次，优先显示中文标题，并列出已有版本的语言入口。只有一个版本时只显示该版本，不生成空的翻译链接。
+- 文章页可直接切换到另一语言版本；页面自动设置语言、自身的 canonical URL 和现有版本之间的 `hreflang` 关联。
+
+正文默认使用文章排版，未来日期的文章默认不显示。以中文为主要写作版本，英文保存为完整译文；修改论点、代码、公式或研究状态时同步更新两个版本。图片共用 `assets/` 下的资源，使用站点根路径；指向其他代码库文档的链接使用完整的 GitHub URL。
 
 ## 数学公式
 
@@ -57,6 +89,8 @@ $$
 - `_config.yml`：站点名称、简介和地址。
 - `assets/css/style.css`：单栏宽度、字体、间距和代码样式。
 - `_layouts/`：基础页面与文章模板。
+- `_includes/post-languages.html`：首页和文章页共用的语言入口。
+- `_data/languages.yml`：语言名称和导航文案。
 
 ## 本地预览
 

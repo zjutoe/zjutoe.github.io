@@ -1,5 +1,8 @@
 ---
 title: Semantic Compiler
+lang: zh-CN
+translation_key: semantic-compiler
+permalink: /posts/SemanticCompiler/
 ---
 
 自然语言智能体能力强大，但指令并不是稳定的接口：语义等价的请求可能产生
@@ -175,21 +178,21 @@ Phase 0 已经完成，它只是早期有限内核的历史工程证据。受控
 
 当前语义依据由以下文档构成：
 
-- [Contract IR 最小内核与编程插件研究计划](docs/plans/Contract_IR_Kernel_and_Coding_Plugin_Research_Plan.md)，已接受 blob `01f959bc55f644a376f8ffa6059e9e77936be77c`，以及它的[独立审查](docs/reviews/kernel_plugin/Contract_IR_Kernel_Plugin_Plan_3f7fc69_review.md)；
-- [K3-S/K3-X 计划修正案](docs/plans/K3_Semantics_and_Executable_Spike_Amendment.md)，已接受 blob `7f1c3627245ec0c0fc86df64f77e374d104649a0`，以及它的[独立审查](docs/reviews/kernel_plugin/K3_SX_Plan_19379b3_review.md)。
+- [Contract IR 最小内核与编程插件研究计划](https://github.com/zjutoe/SemanticCompiler/blob/main/docs/plans/Contract_IR_Kernel_and_Coding_Plugin_Research_Plan.md)，已接受 blob `01f959bc55f644a376f8ffa6059e9e77936be77c`，以及它的[独立审查](https://github.com/zjutoe/SemanticCompiler/blob/main/docs/reviews/kernel_plugin/Contract_IR_Kernel_Plugin_Plan_3f7fc69_review.md)；
+- [K3-S/K3-X 计划修正案](https://github.com/zjutoe/SemanticCompiler/blob/main/docs/plans/K3_Semantics_and_Executable_Spike_Amendment.md)，已接受 blob `7f1c3627245ec0c0fc86df64f77e374d104649a0`，以及它的[独立审查](https://github.com/zjutoe/SemanticCompiler/blob/main/docs/reviews/kernel_plugin/K3_SX_Plan_19379b3_review.md)。
 
 按依赖顺序排列的已接受结果：
 
-- [K0 语义设计输入](KernelPlugin/K0_Semantic_Design_Inputs_v0.md)，blob `e86e184300a6620fb6fe25062635d9bc7cb410a1`，及其[审查](docs/reviews/kernel_plugin/K0_Design_Inputs_6ad555e_review.md)；
-- [K1 内核演算](KernelPlugin/K1_Kernel_Calculus_and_Denotational_Semantics_v0.md)，blob `d928010319c2c3bd08a94e1856cfca24dc2ae39e`，及其[审查](docs/reviews/kernel_plugin/K1_Kernel_Calculus_f3418a6_review.md)；
-- [K2 插件 ABI 与推理接口](KernelPlugin/K2_Versioned_Plugin_ABI_and_Reasoning_Interface_v0.md)，blob `1ea0d9fb014bf983c4c84f35e0c88590bd9e9ab4`，及其[审查](docs/reviews/kernel_plugin/K2_Plugin_ABI_5b6f157_review.md)；
-- [K3-S 编程插件语义](KernelPlugin/K3_S_Minimal_Coding_Plugin_Semantics_v0.md)，blob `31e9ffbaedcf7c1531a0a614078479f7cfefb1fe`，及其[审查](docs/reviews/kernel_plugin/K3_S_Semantics_ced9082_review.md)；
-- [K3-X 可执行原型报告](docs/reports/kernel_plugin/K3_X_Executable_Spike_Report.md)，以及[最终独立验收](docs/reviews/kernel_plugin/K3_X_Executable_Result_68927ab_review.md)。
+- [K0 语义设计输入](https://github.com/zjutoe/SemanticCompiler/blob/main/KernelPlugin/K0_Semantic_Design_Inputs_v0.md)，blob `e86e184300a6620fb6fe25062635d9bc7cb410a1`，及其[审查](https://github.com/zjutoe/SemanticCompiler/blob/main/docs/reviews/kernel_plugin/K0_Design_Inputs_6ad555e_review.md)；
+- [K1 内核演算](https://github.com/zjutoe/SemanticCompiler/blob/main/KernelPlugin/K1_Kernel_Calculus_and_Denotational_Semantics_v0.md)，blob `d928010319c2c3bd08a94e1856cfca24dc2ae39e`，及其[审查](https://github.com/zjutoe/SemanticCompiler/blob/main/docs/reviews/kernel_plugin/K1_Kernel_Calculus_f3418a6_review.md)；
+- [K2 插件 ABI 与推理接口](https://github.com/zjutoe/SemanticCompiler/blob/main/KernelPlugin/K2_Versioned_Plugin_ABI_and_Reasoning_Interface_v0.md)，blob `1ea0d9fb014bf983c4c84f35e0c88590bd9e9ab4`，及其[审查](https://github.com/zjutoe/SemanticCompiler/blob/main/docs/reviews/kernel_plugin/K2_Plugin_ABI_5b6f157_review.md)；
+- [K3-S 编程插件语义](https://github.com/zjutoe/SemanticCompiler/blob/main/KernelPlugin/K3_S_Minimal_Coding_Plugin_Semantics_v0.md)，blob `31e9ffbaedcf7c1531a0a614078479f7cfefb1fe`，及其[审查](https://github.com/zjutoe/SemanticCompiler/blob/main/docs/reviews/kernel_plugin/K3_S_Semantics_ced9082_review.md)；
+- [K3-X 可执行原型报告](https://github.com/zjutoe/SemanticCompiler/blob/main/docs/reports/kernel_plugin/K3_X_Executable_Spike_Report.md)，以及[最终独立验收](https://github.com/zjutoe/SemanticCompiler/blob/main/docs/reviews/kernel_plugin/K3_X_Executable_Result_68927ab_review.md)。
 
-[内核/插件流程索引](KernelPlugin/README.md)按阶段提供指引，
-[审查索引](docs/reviews/README.md)记录精确的审查绑定。
+[内核/插件流程索引](https://github.com/zjutoe/SemanticCompiler/blob/main/KernelPlugin/README.md)按阶段提供指引，
+[审查索引](https://github.com/zjutoe/SemanticCompiler/blob/main/docs/reviews/README.md)记录精确的审查绑定。
 
-原 [IR Design Memo v0](docs/plans/IR_Design_Memo_v0.md) 和
-[Semantic Compiler Contract IR Research Plan](docs/plans/Semantic_Compiler_Contract_IR_Research_Plan.md)
+原 [IR Design Memo v0](https://github.com/zjutoe/SemanticCompiler/blob/main/docs/plans/IR_Design_Memo_v0.md) 和
+[Semantic Compiler Contract IR Research Plan](https://github.com/zjutoe/SemanticCompiler/blob/main/docs/plans/Semantic_Compiler_Contract_IR_Research_Plan.md)
 保留更广泛的研究动机和早期假设。它们属于历史背景，不是当前语义或执行
 依据。
