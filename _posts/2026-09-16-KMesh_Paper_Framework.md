@@ -40,7 +40,7 @@ KMesh 探索另一种架构假设：
 
 KMesh 希望最终实现：
 
-\[
+$$
 \text{Semantic Locality}
 \rightarrow
 \text{Parameter Locality}
@@ -48,13 +48,13 @@ KMesh 希望最终实现：
 \text{Computation Locality}
 \rightarrow
 \text{Update Locality}
-\]
+$$
 
 同时仍然保持：
 
-\[
+$$
 \text{Global Composability}
-\]
+$$
 
 核心科学问题不是“能否局部修改一些参数”，因为 embedding、MoE、LoRA、model editing 等研究已经证明这一点在不同形式下可行。
 
@@ -70,11 +70,11 @@ KMesh 真正要验证的是：
 
 对于普通 Transformer：
 
-\[
+$$
 y = xW
-\]
+$$
 
-即使当前样本只涉及一条局部知识，dense matrix \(W\) 仍通常整体参与 forward，反向传播也会影响大量参数。
+即使当前样本只涉及一条局部知识，dense matrix $$W$$ 仍通常整体参与 forward，反向传播也会影响大量参数。
 
 因此：
 
@@ -101,13 +101,13 @@ KMesh 的目标不是做一个更聪明的 FSDP，而是尝试改变这个前提
 
 KMesh 希望继续推进：
 
-\[
+$$
 \text{Conditional Computation}
 \rightarrow
 \text{Conditional Memory}
 \rightarrow
 \text{Structured, Editable Knowledge Memory}
-\]
+$$
 
 ## 2.3 持续学习比一次性预训练更重要
 
@@ -148,11 +148,11 @@ KMesh 希望支持：
 
 一个具体任务通常只需要访问整个知识网络中的一小部分知识。
 
-\[
+$$
 |W_t| \ll |\mathcal K|
-\]
+$$
 
-其中 \(\mathcal K\) 是整个知识网络，\(W_t\) 是当前任务所需 working set。
+其中 $$\mathcal K$$ 是整个知识网络，$$W_t$$ 是当前任务所需 working set。
 
 ## H2. Update Locality
 
@@ -208,11 +208,11 @@ KMesh 的挑战在于：知识没有显式 user_id / word_id，必须通过语�
 
 Sparsely-Gated MoE、Switch Transformer、DeepSeekMoE 等工作证明：
 
-\[
+$$
 \text{Large Total Capacity}
 \neq
 \text{Large Activated Compute}
-\]
+$$
 
 只有少数 expert 参与当前 token 的计算。
 
@@ -242,11 +242,11 @@ DeepSeek 的 Engram 是 KMesh 最相关的近期工作之一。
 
 它将模型容量拆成：
 
-\[
+$$
 \text{Conditional Computation}
 +
 \text{Conditional Memory}
-\]
+$$
 
 并使用 N-gram hash 直接访问巨大 memory table。
 
@@ -295,11 +295,11 @@ A³E 暴露了 KMesh 最需要重视的问题：
 
 这直接告诉我们：
 
-\[
+$$
 \text{Local Update}
 \neq
 \text{Global Compatibility}
-\]
+$$
 
 因此，KMesh 不应把“能局部修改 patch”当作成功。真正需要验证的是：经过大量 sequential local updates 后，任意相关 patch 仍然能够在未见组合中协作。
 
@@ -343,9 +343,9 @@ KMesh 不准备采用固定的严格层次摘要树，但这些工作支持一�
 
 候选表示：
 
-\[
+$$
 P_i = (id_i,C_i,k_i,U_i,E_i,v_i)
-\]
+$$
 
 其中：
 
@@ -370,13 +370,13 @@ patch 之间可以存在多种关系。不建议只存一个 scalar “similarit
 
 更可能需要：
 
-\[
+$$
 E_{ij}=\{s_{semantic},s_{coactivation},s_{transition},s_{synergy},s_{conflict}\}
-\]
+$$
 
 - **Semantic relation**：内容相似、概念相近；
 - **Coactivation relation**：在解决任务时经常共同被读取；
-- **Transition relation**：读取 \(P_i\) 后，经常进一步读取 \(P_j\)；
+- **Transition relation**：读取 $$P_i$$ 后，经常进一步读取 $$P_j$$；
 - **Synergy relation**：二者共同使用时，效果超过单独贡献简单相加；
 - **Conflict / competition relation**：二者在联合使用或更新时容易产生负干扰。
 
@@ -398,21 +398,21 @@ Actual Use
 
 即：
 
-\[
+$$
 \operatorname{Retrieve}(q)\rightarrow\{P_i\}
-\]
+$$
 
 然后：
 
-\[
+$$
 \alpha_i=\operatorname{Gate}(h,P_i)
-\]
+$$
 
 最后：
 
-\[
+$$
 h'=h+\sum_i\alpha_iV(P_i)
-\]
+$$
 
 这借鉴 Engram：retrieval 只负责 recall，当前 hidden state 决定 memory 是否真正适用。
 
@@ -429,15 +429,15 @@ Patch P123
 └── Reader@Layer10
 ```
 
-共享 patch \(U_i\) 由不同 layer-specific reader 解释：
+共享 patch $$U_i$$ 由不同 layer-specific reader 解释：
 
-\[
+$$
 K_i^{(\ell)}=U_iW_K^{(\ell)}
-\]
+$$
 
-\[
+$$
 V_i^{(\ell)}=U_iW_V^{(\ell)}
-\]
+$$
 
 这允许同一知识跨层访问、不同层形成不同读取偏好，并让 memory 与 Transformer 层解耦。
 
@@ -467,11 +467,11 @@ KMesh 不采用严格的“事实 → 区域摘要 → 总摘要”层次。
 
 可以让每一层学习：
 
-\[
+$$
 p_\ell=(1-\gamma_\ell)p_\ell^{global}+\gamma_\ell p_\ell^{graph}
-\]
+$$
 
-其中 `global` 是重新从整个 patch space 检索，`graph` 是沿当前已激活 patch 的邻居扩展，\(\gamma_\ell\) 可学习。
+其中 `global` 是重新从整个 patch space 检索，`graph` 是沿当前已激活 patch 的邻居扩展，$$\gamma_\ell$$ 可学习。
 
 ---
 
@@ -479,17 +479,17 @@ p_\ell=(1-\gamma_\ell)p_\ell^{global}+\gamma_\ell p_\ell^{graph}
 
 理想目标：
 
-\[
+$$
 P_i^v\rightarrow P_i^{v+1}
-\]
+$$
 
 只更新 patch 自身表示、少量 reader / adapter（如果必要）、patch 周围相关关系，而不是重新训练整个网络。
 
 但局部 edit 本身不是最终目标。真正需要解决：
 
-\[
+$$
 \boxed{\text{Local Update}+\text{Compatibility Preservation}}
-\]
+$$
 
 ---
 
@@ -497,13 +497,13 @@ P_i^v\rightarrow P_i^{v+1}
 
 这是当前最重要的新想法之一。
 
-假设在 layer \(\ell\)，\(a_i^{(\ell)}\) 表示 patch \(P_i\) 的有效激活强度。
+假设在 layer $$\ell$$，$$a_i^{(\ell)}$$ 表示 patch $$P_i$$ 的有效激活强度。
 
 可以积累：
 
-\[
+$$
 C_{ij}\leftarrow C_{ij}+a_ia_j
-\]
+$$
 
 形成长期 co-use 统计。
 
@@ -511,15 +511,15 @@ C_{ij}\leftarrow C_{ij}+a_ia_j
 
 因此可考虑归一化：
 
-\[
+$$
 R_{ij}=\log\frac{P(i,j)}{P(i)P(j)}
-\]
+$$
 
 同时记录 directional relation：
 
-\[
+$$
 P(P_j@t+1\mid P_i@t)
-\]
+$$
 
 ---
 
@@ -529,14 +529,14 @@ P(P_j@t+1\mid P_i@t)
 
 对于重要候选边，可以用少量 intervention 来估计：
 
-\[
+$$
 I_{ij}=L_{-ij}-L_{-i}-L_{-j}+L
-\]
+$$
 
 直观上：
 
-- \(I_{ij}>0\)：可能存在互补 / synergy；
-- \(I_{ij}<0\)：可能存在冗余 / substitute；
+- $$I_{ij}>0$$：可能存在互补 / synergy；
+- $$I_{ij}<0$$：可能存在冗余 / substitute；
 - strong negative interaction：可能存在 conflict。
 
 不可能对所有 patch 两两计算，因此：
@@ -561,43 +561,43 @@ P_i
 
 那么当：
 
-\[
+$$
 P_i^v\rightarrow P_i^{v+1}
-\]
+$$
 
 更新时，不必回归测试整个知识网络，可以优先测试：
 
-\[
+$$
 P_i'\oplus P_{17},\quad
 P_i'\oplus P_{42},\quad
 P_i'\oplus P_{103}
-\]
+$$
 
 这形成 **Local Compatibility Frontier**：
 
-\[
+$$
 \text{Local Update}
 \rightarrow
 \text{Local Compatibility Regression}
-\]
+$$
 
-如果 graph 能准确预测未来真正需要组合的 patch，这可能把 \(O(N^2)\) 潜在组合验证问题缩减为稀疏的 \(O(|E|)\) 局部验证问题。
+如果 graph 能准确预测未来真正需要组合的 patch，这可能把 $$O(N^2)$$ 潜在组合验证问题缩减为稀疏的 $$O(\lvert E\rvert)$$ 局部验证问题。
 
 ---
 
 # 14. Patch Update Objective / 更新时的兼容性训练
 
-更新 \(P_i\) 时，不只优化新知识本身：
+更新 $$P_i$$ 时，不只优化新知识本身：
 
-\[
+$$
 L_{new}(P_i')
-\]
+$$
 
-而可以从邻居 \(N(P_i)\) 中采样，加入：
+而可以从邻居 $$N(P_i)$$ 中采样，加入：
 
-\[
+$$
 L=L_{new}+\lambda L_{composition}+\mu L_{locality}
-\]
+$$
 
 其中：
 
@@ -615,17 +615,17 @@ patch 更新后，旧关系不应全部删除，也不应完全保留。
 
 可以：
 
-\[
+$$
 w_{ij}^{new}=\rho_iw_{ij}^{old}
-\]
+$$
 
 其中：
 
-\[
+$$
 \rho_i=f(distance(P_i^{old},P_i^{new}))
-\]
+$$
 
-小改动时 \(\rho\approx1\)，大改动时 \(\rho\ll1\)。
+小改动时 $$\rho\approx1$$，大改动时 $$\rho\ll1$$。
 
 之后随着新 patch 被重新使用，再利用 coactivation、transition、gradient affinity、intervention 重新估计关系。
 
@@ -647,9 +647,9 @@ edge 更强
 
 即：
 
-\[
+$$
 retrieval\rightarrow coactivation\rightarrow edge\rightarrow more\ retrieval
-\]
+$$
 
 需要考虑 edge decay、exploration、popularity normalization、independent semantic retrieval、held-out coactivation statistics、causal validation、graph-free candidate generation，避免图自己制造“证据”。
 
@@ -671,9 +671,9 @@ NVMe SSD
 
 当前任务只加载：
 
-\[
+$$
 W_t\subset\mathcal K
-\]
+$$
 
 这意味着知识网络理论容量可以远大于 GPU 显存。
 
@@ -683,15 +683,15 @@ W_t\subset\mathcal K
 
 每个 patch 需要稳定的逻辑身份：
 
-\[
+$$
 PatchRef=(patch\_id,version,local\_slot)
-\]
+$$
 
 而当前驻留地址：
 
-\[
+$$
 ResidentTable[PatchRef]\rightarrow(device,page,offset)
-\]
+$$
 
 可以动态变化。
 
@@ -703,9 +703,9 @@ Q/K/V 不应依赖真实 GPU offset。
 
 运行时应保证：
 
-\[
+$$
 F(x,\mathcal P;layout_1)\approx F(x,\mathcal P;layout_2)
-\]
+$$
 
 即同一批 patch 换不同物理布局，不改变模型语义。
 
@@ -713,21 +713,21 @@ F(x,\mathcal P;layout_1)\approx F(x,\mathcal P;layout_2)
 
 # 19. Prefetch / 预取
 
-Engram 的优势是地址可以由 N-gram 提前确定。KMesh 的地址往往依赖 \(h_\ell\)，因此可能需要 **predictive patch prefetch**。
+Engram 的优势是地址可以由 N-gram 提前确定。KMesh 的地址往往依赖 $$h_\ell$$，因此可能需要 **predictive patch prefetch**。
 
 早期 hidden state：
 
-\[
+$$
 h_\ell
-\]
+$$
 
 预测：
 
-\[
+$$
 P(P_i\text{ later needed}\mid h_\ell)
-\]
+$$
 
-提前将候选 patch 从 RAM 搬入 GPU。后续更深层 \(h_{\ell+k}\) 再进行精确 gating。
+提前将候选 patch 从 RAM 搬入 GPU。后续更深层 $$h_{\ell+k}$$ 再进行精确 gating。
 
 ---
 
@@ -787,15 +787,15 @@ exact patch
 
 冻结模型：
 
-\[
+$$
 P_i^v\rightarrow P_i^{v+1}
-\]
+$$
 
 检验新知识是否立即生效、无关知识是否保持、依赖旧知识的任务是否正确变化。
 
 ## E1-B. Local Neural Patch Update
 
-只训练 \(U_i\) 或少数相关 patch，不修改整个主干。
+只训练 $$U_i$$ 或少数相关 patch，不修改整个主干。
 
 比较：local training cost、edit success、retention、interference、composition。
 
@@ -829,10 +829,10 @@ P17 + P429 + P812
 
 # 23. E1-D. Graph-guided Compatibility Training
 
-更新 \(P_i\) 时比较：
+更新 $$P_i$$ 时比较：
 
 ### baseline
-只训练 \(P_i\)。
+只训练 $$P_i$$。
 
 ### semantic neighbors
 与语义相似 patch 联合训练。
@@ -888,17 +888,17 @@ SSD
 
 固定 total training budget 和 activated FLOPs，改变：
 
-\[
+$$
 \text{Core Capacity}\leftrightarrow\text{Patch Capacity}
-\]
+$$
 
 观察 factual recall、reasoning、unseen composition、continual update。
 
 寻找最优：
 
-\[
+$$
 \rho_K^*
-\]
+$$
 
 即最优 compute / knowledge allocation。
 
@@ -1099,15 +1099,15 @@ Sparse Dynamic Access
 
 知识规模可以继续增长：
 
-\[
+$$
 |\mathcal K|\rightarrow\infty
-\]
+$$
 
 而当前 GPU working set 仍保持有限：
 
-\[
+$$
 |W_t|\ll|\mathcal K|
-\]
+$$
 
 知识更新可以：
 
