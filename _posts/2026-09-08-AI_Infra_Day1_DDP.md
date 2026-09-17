@@ -6,7 +6,7 @@ permalink: /posts/AI_Infra_Day1_DDP/
 ---
 # 第一版：手动DDP
 - 多进程启动：torchrun，每个进程对应一个rank，rank有global rank id、local rank id。所有rank属于同一个process group。
-- 特点：模型参数共享、数据分布式处理。
+- 特点：每个 rank 维护完整模型副本，通过同步梯度并执行一致的本地更新保持参数一致，数据分布式处理。
 - 数据同步时机：模型forward/backward之后，optimizer.step()之前。
 - 数据同步方式：all_reduce，即各rank的数据加总，dist.all_reduce(..., op=dist.ReduceOp.SUM)，然后除以总rank数（world_size）取平均。
 - 数据同步底层库：torch.distributed -> Nvidia Collective Communications Library (NCCL) 

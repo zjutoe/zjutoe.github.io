@@ -6,7 +6,7 @@ permalink: /en/posts/AI_Infra_Day1_DDP/
 ---
 # Version 1: Manual DDP
 - Multiprocess launch: use `torchrun`, with each process corresponding to a rank. Each rank has a global rank ID and a local rank ID. All ranks belong to the same process group.
-- Characteristics: shared model parameters and distributed data processing.
+- Characteristics: each rank maintains a full model replica and keeps its parameters consistent with the other ranks by synchronizing gradients and applying the same local updates. Data processing is distributed.
 - When synchronization happens: after the model's forward/backward pass and before `optimizer.step()`.
 - How synchronization works: use `all_reduce` to sum the data across ranks with `dist.all_reduce(..., op=dist.ReduceOp.SUM)`, then divide by the total number of ranks (`world_size`) to take the average.
 - Underlying synchronization library: `torch.distributed` → NVIDIA Collective Communications Library (NCCL).
