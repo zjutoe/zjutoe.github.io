@@ -2,6 +2,7 @@
 title: CapKnow - Capability Knowledge Space Certificate Laboratory
 lang: en
 translation_key: capknow
+category: research
 permalink: /en/posts/CapKnow/
 ---
 

@@ -2,6 +2,7 @@
 title: Semantic Compiler
 lang: zh-CN
 translation_key: semantic-compiler
+category: research
 permalink: /posts/SemanticCompiler/
 ---
 

@@ -2,6 +2,7 @@
 title: "AI Infra Day 1: Distributed Data Parallel (DDP)"
 lang: en
 translation_key: ai-infra-day1-ddp
+category: notes
 permalink: /en/posts/AI_Infra_Day1_DDP/
 ---
 # Version 1: Manual DDP

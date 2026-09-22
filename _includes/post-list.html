@@ -1,0 +1,27 @@
+{% assign list_lang = page.lang | default: site.lang %}
+{% assign filtered_posts = site.posts %}
+{% if include.category %}
+{% assign filtered_posts = site.posts | where: 'category', include.category %}
+{% endif %}
+{% assign post_groups = filtered_posts | group_by: 'translation_key' %}
+{% if post_groups.size > 0 %}
+<ul class="post-list">
+  {% for group in post_groups %}
+  {% assign chinese_post = group.items | where: 'lang', 'zh-CN' | first %}
+  {% assign post = chinese_post | default: group.items.first %}
+  <li>
+    <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y-%m-%d' }}</time>
+    <div>
+      <a href="{{ post.url | relative_url }}" lang="{{ post.lang }}">{{ post.title | escape }}</a>
+      {% if post.category %}
+      {% assign cat = site.data.categories | where: 'slug', post.category | first %}
+      <span class="category-label">{{ cat[list_lang] }}</span>
+      {% endif %}
+      {% include post-languages.html posts=group.items lang=page.lang %}
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p class="empty-state">{{ site.data.languages[list_lang].empty_posts }}</p>
+{% endif %}

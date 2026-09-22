@@ -2,6 +2,7 @@
 title: KMesh Latent Patch Extraction Research Plan
 lang: zh-CN
 translation_key: kmesh-latent-patch-extraction
+category: research
 permalink: /posts/KMesh_Latent_Patch_Extraction_Research_Plan/
 ---
 

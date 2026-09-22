@@ -22,6 +22,12 @@
         <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
         <p class="site-description">{{ site.description | escape }}</p>
       </header>
+      <nav class="site-nav" aria-label="{{ site.data.languages[page_lang].categories }}">
+        <a href="{{ '/' | relative_url }}">{{ site.data.languages[page_lang].all_posts }}</a>
+        {% for cat in site.data.categories %}
+        <a href="{{ '/' | relative_url }}{{ cat.slug }}/">{{ cat[page_lang] }}</a>
+        {% endfor %}
+      </nav>
       <main id="main" tabindex="-1">
         {{ content }}
       </main>

@@ -1,0 +1,12 @@
+---
+layout: default
+lang: en
+title: Research
+category: research
+permalink: /research/
+---
+{% assign cat = site.data.categories | where: 'slug', page.category | first %}
+<section aria-labelledby="research-heading">
+  <h1 class="section-title" id="research-heading">{{ cat[page.lang] }}</h1>
+  {% include post-list.html category=page.category %}
+</section>

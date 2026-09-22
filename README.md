@@ -40,7 +40,7 @@ permalink: /en/posts/first-note/
 Write the English article here.
 ```
 
-- 每个版本都必须填写 `title`、`lang`、`translation_key` 和 `permalink`；`description` 可选。
+- 每个版本都必须填写 `title`、`lang`、`translation_key`、`category` 和 `permalink`；`description` 可选。
 - `translation_key` 是文章的稳定标识，同一篇文章的两个版本必须一致，不同文章不能复用。同一标识下，每种语言只能有一个版本。
 - 目前支持 `zh-CN` 和 `en`。两个版本使用相同的文件名日期（原文发布日期），翻译或修订时保留该日期，避免改变首页排序。
 - 中文 URL 使用 `/posts/<slug>/`，英文使用 `/en/posts/<slug>/`。URL 必须唯一；已有文章保留原文件名和 URL，不需要添加 `-zh` 后缀。
@@ -91,6 +91,24 @@ $$
 - `_layouts/`：基础页面与文章模板。
 - `_includes/post-languages.html`：首页和文章页共用的语言入口。
 - `_data/languages.yml`：语言名称和导航文案。
+
+## 专栏分类
+
+每篇 `category` 只能填一个值，归入一个专栏：
+
+| 值 | 专栏 | 栏目页 URL |
+|---|---|---|
+| `research` | 研究探索 | /research/ |
+| `notes` | 学习笔记 | /notes/ |
+| `review` | 技术评论 | /review/ |
+
+同一 `translation_key` 的两个版本必须填同一个 `category`。检查脚本（校验 `category` 必填、取值合法、同 `translation_key` 一致）：
+
+```bash
+python3 .github/scripts/check_posts.py
+```
+
+依赖 PyYAML（`pip install pyyaml`）。
 
 ## 本地预览
 

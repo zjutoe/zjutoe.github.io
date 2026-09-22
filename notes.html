@@ -1,0 +1,12 @@
+---
+layout: default
+lang: en
+title: Notes
+category: notes
+permalink: /notes/
+---
+{% assign cat = site.data.categories | where: 'slug', page.category | first %}
+<section aria-labelledby="notes-heading">
+  <h1 class="section-title" id="notes-heading">{{ cat[page.lang] }}</h1>
+  {% include post-list.html category=page.category %}
+</section>

@@ -2,6 +2,7 @@
 title: Semantic Compiler
 lang: en
 translation_key: semantic-compiler
+category: research
 permalink: /en/posts/SemanticCompiler/
 ---
 

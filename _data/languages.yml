@@ -4,9 +4,13 @@ zh-CN:
   all_posts: ← 所有文章
   translations: 文章语言
   post_navigation: 文章导航
+  categories: 栏目
+  empty_posts: 这个栏目暂无文章
 en:
   label: English
   skip_to_content: Skip to content
   all_posts: ← All posts
   translations: Article languages
   post_navigation: Post navigation
+  categories: Categories
+  empty_posts: Nothing is here.

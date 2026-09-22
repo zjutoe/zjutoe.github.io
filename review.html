@@ -1,0 +1,12 @@
+---
+layout: default
+lang: en
+title: Reviews
+category: review
+permalink: /review/
+---
+{% assign cat = site.data.categories | where: 'slug', page.category | first %}
+<section aria-labelledby="review-heading">
+  <h1 class="section-title" id="review-heading">{{ cat[page.lang] }}</h1>
+  {% include post-list.html category=page.category %}
+</section>
