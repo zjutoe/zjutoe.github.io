@@ -62,7 +62,8 @@ def main():
         if key:
             by_key.setdefault(key, []).append((path.name, frontmatter.get("category")))
     for key, entries in sorted(by_key.items()):
-        categories = {c for _, c in entries if c}
+        # 仅纳入通过类型校验（字符串且取值合法）的值做一致性比较，避免异常值（如列表）触发 TypeError
+        categories = {c for _, c in entries if isinstance(c, str) and c in ALLOWED_CATEGORIES}
         if len(categories) > 1:
             errors.append(
                 f"translation_key {key!r}: 同一篇文章不同版本的 "

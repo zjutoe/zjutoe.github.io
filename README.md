@@ -20,6 +20,7 @@ title: 第一篇技术笔记
 description: 文章的简短介绍。
 lang: zh-CN
 translation_key: first-note
+category: notes
 permalink: /posts/first-note/
 ---
 
@@ -34,6 +35,7 @@ title: My First Technical Note
 description: A short description of the article.
 lang: en
 translation_key: first-note
+category: notes
 permalink: /en/posts/first-note/
 ---
 
