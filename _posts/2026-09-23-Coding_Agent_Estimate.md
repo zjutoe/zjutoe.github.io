@@ -31,3 +31,7 @@ permalink: /posts/Coding_Agent_Estimate/
 ## Bonsai 评测结果
 
 ![Bonsai 编程任务评测结果截图](/assets/images/coding_agent_estimate/bonsai_estimate.webp)
+
+## Qwen vs Bonsai 对比
+
+![Bonsai 编程任务评测对比结果截图](/assets/images/coding_agent_estimate/qwen_vs_bonsai_estimate.webp)
