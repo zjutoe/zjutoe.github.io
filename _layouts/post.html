@@ -16,6 +16,9 @@ layout: default
   <div class="prose">
     {{ content }}
   </div>
+  {% if site.giscus.enabled %}
+    {% include comments.html %}
+  {% endif %}
 </article>
 <nav class="post-navigation" aria-label="{{ site.data.languages[page.lang].post_navigation }}">
   <a href="{{ '/' | relative_url }}">{{ site.data.languages[page.lang].all_posts }}</a>

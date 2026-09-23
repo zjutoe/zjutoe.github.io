@@ -94,6 +94,22 @@ $$
 - `_includes/post-languages.html`：首页和文章页共用的语言入口。
 - `_data/languages.yml`：语言名称和导航文案。
 
+## 文章留言
+
+文章模板使用 [giscus](https://giscus.app/zh-CN)，留言存储在 GitHub Discussions 中。读者登录 GitHub 并授权 giscus 后可以评论、回复和添加表情回应。
+
+首次启用：
+
+1. 在[仓库设置](https://github.com/zjutoe/zjutoe.github.io/settings)的 Features 中启用 Discussions。
+2. 安装 [giscus GitHub App](https://github.com/apps/giscus)，授权 `zjutoe.github.io` 仓库。
+3. 在 [giscus 配置页](https://giscus.app/zh-CN)填写 `zjutoe/zjutoe.github.io`，选择 `Announcements`（公告类型）分类。
+4. 将生成代码中的 `data-repo-id`、`data-category` 和 `data-category-id` 对应填入 `_config.yml` 的 `giscus.repo_id`、`giscus.category` 和 `giscus.category_id`，再将 `giscus.enabled` 设为 `true`。这些 ID 是公开配置，无需填写 token 或密钥。
+5. 构建并发布网站后，打开文章页检查留言区。第一条评论或回应会自动创建对应的 discussion。
+
+留言区位于文章正文下方，使用与博客一致的浅色主题并延迟加载，界面语言随文章切换。页面以 `translation_key` 作为讨论标识，并启用严格匹配，因此中英文版本共享留言，修改标题或 URL 不会新建讨论。发布后保持 `translation_key` 稳定且每篇文章唯一。
+
+可在 [Discussions](https://github.com/zjutoe/zjutoe.github.io/discussions) 中管理留言。将 `giscus.enabled` 设为 `false` 可隐藏全站留言区，已有讨论仍保留在 GitHub。
+
 ## 专栏分类
 
 每篇 `category` 只能填一个值，归入一个专栏：

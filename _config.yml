@@ -3,6 +3,12 @@ description: what I'm playing with | let's build AI for the people
 lang: en
 url: https://zjutoe.github.io
 baseurl: ""
+giscus:
+  enabled: true
+  repo: zjutoe/zjutoe.github.io
+  repo_id: R_kgDOUSX2GQ
+  category: Announcements
+  category_id: DIC_kwDOUSX2Gc4DGNLF
 permalink: /posts/:title/
 markdown: kramdown
 kramdown:

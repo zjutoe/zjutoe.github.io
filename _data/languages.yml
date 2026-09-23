@@ -6,6 +6,8 @@ zh-CN:
   post_navigation: 文章导航
   categories: 栏目
   empty_posts: 这个栏目暂无文章
+  comments: 留言
+  comments_hint: 登录 GitHub 后即可留言。中英文版本共用此讨论区。
 en:
   label: English
   skip_to_content: Skip to content
@@ -14,3 +16,5 @@ en:
   post_navigation: Post navigation
   categories: Categories
   empty_posts: Nothing is here.
+  comments: Comments
+  comments_hint: Sign in with GitHub to leave a comment. Chinese and English versions share this discussion.

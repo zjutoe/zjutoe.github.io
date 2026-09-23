@@ -49,6 +49,9 @@ pre code { padding: 0; font-size: inherit; border-radius: 0; }
 .prose th, .prose td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
 .prose th { background: #f5f5f5; }
 .prose hr { margin: 32px 0; border: 0; border-top: 1px solid #e5e5e5; }
+.post-comments { margin-top: 48px; padding-top: 24px; border-top: 1px solid #e5e5e5; }
+.post-comments h2 { margin: 0 0 12px; font-size: 23px; font-weight: 600; }
+.comments-hint { margin: 0 0 20px; color: #666; font-size: 14px; line-height: 1.7; }
 .post-navigation { margin-top: 48px; font-size: 14px; }
 .site-footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid #e5e5e5; font-size: 13px; }
 .site-footer a { color: #666; }
