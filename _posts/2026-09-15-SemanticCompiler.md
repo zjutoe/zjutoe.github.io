@@ -1,5 +1,5 @@
 ---
-title: Semantic Compiler
+title: 语义编译器
 lang: zh-CN
 translation_key: semantic-compiler
 category: research

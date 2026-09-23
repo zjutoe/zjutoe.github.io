@@ -1,5 +1,5 @@
 ---
-title: KMesh Latent Patch Extraction Research Plan
+title: KMesh 潜在知识补丁提取研究计划
 lang: zh-CN
 translation_key: kmesh-latent-patch-extraction
 category: research

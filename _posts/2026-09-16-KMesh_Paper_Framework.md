@@ -1,5 +1,5 @@
 ---
-title: KMesh - Locally Updatable Knowledge Patches for Continually Evolving Neural Memory
+title: KMesh：以可局部更新的知识补丁构建持续演进的神经记忆
 lang: zh-CN
 translation_key: kmesh-paper-framework
 category: research

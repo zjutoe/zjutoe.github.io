@@ -1,5 +1,5 @@
 ---
-title: "AI Infra Day1 Distributed Data Parallel (DDP)"
+title: AI 基础设施第 1 天：分布式数据并行（DDP）
 lang: zh-CN
 translation_key: ai-infra-day1-ddp
 category: notes

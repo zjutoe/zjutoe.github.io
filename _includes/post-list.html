@@ -7,12 +7,16 @@
 {% if post_groups.size > 0 %}
 <ul class="post-list">
   {% for group in post_groups %}
+  {% assign english_post = group.items | where: 'lang', 'en' | first %}
   {% assign chinese_post = group.items | where: 'lang', 'zh-CN' | first %}
-  {% assign post = chinese_post | default: group.items.first %}
+  {% assign post = english_post | default: group.items.first %}
   <li>
     <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y-%m-%d' }}</time>
     <div>
-      <a href="{{ post.url | relative_url }}" lang="{{ post.lang }}">{{ post.title | escape }}</a>
+      <a class="post-title" href="{{ post.url | relative_url }}" lang="{{ post.lang }}">{{ post.title | escape }}</a>
+      {% if english_post and chinese_post %}
+      <a class="post-title post-title-secondary" href="{{ chinese_post.url | relative_url }}" lang="{{ chinese_post.lang }}">{{ chinese_post.title | escape }}</a>
+      {% endif %}
       {% if post.category %}
       {% assign cat = site.data.categories | where: 'slug', post.category | first %}
       <span class="category-label">{{ cat[list_lang] }}</span>
