@@ -26,8 +26,8 @@ permalink: /posts/Coding_Agent_Estimate/
 
 ## Qwen 评测结果
 
-![Qwen 编程任务评测结果截图](/assets/images/coding_agent_estimate/qwen_estimate.png)
+![Qwen 编程任务评测结果截图](/assets/images/coding_agent_estimate/qwen_estimate.webp)
 
 ## Bonsai 评测结果
 
-![Bonsai 编程任务评测结果截图](/assets/images/coding_agent_estimate/bonsai_estimate.png)
+![Bonsai 编程任务评测结果截图](/assets/images/coding_agent_estimate/bonsai_estimate.webp)

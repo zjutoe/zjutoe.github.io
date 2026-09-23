@@ -26,8 +26,8 @@ The coding tasks come from the [KMesh](https://github.com/zjutoe/KMesh.git) proj
 
 ## Qwen Evaluation Results
 
-![Screenshot of the Qwen coding task evaluation results (in Chinese)](/assets/images/coding_agent_estimate/qwen_estimate.png)
+![Screenshot of the Qwen coding task evaluation results (in Chinese)](/assets/images/coding_agent_estimate/qwen_estimate.webp)
 
 ## Bonsai Evaluation Results
 
-![Screenshot of the Bonsai coding task evaluation results (in Chinese)](/assets/images/coding_agent_estimate/bonsai_estimate.png)
+![Screenshot of the Bonsai coding task evaluation results (in Chinese)](/assets/images/coding_agent_estimate/bonsai_estimate.webp)
