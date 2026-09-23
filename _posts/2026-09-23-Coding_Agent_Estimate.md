@@ -1,5 +1,5 @@
 ---
-title: Evaluating Local Language Models for Coding
+title: 本地语言模型编程能力评测
 description: 由 Codex 规划和审核，以 KMesh 编程任务评测 Qwen 与 Bonsai 本地模型的任务执行完整性和正确性。
 lang: zh-CN
 translation_key: coding-agent-estimate
