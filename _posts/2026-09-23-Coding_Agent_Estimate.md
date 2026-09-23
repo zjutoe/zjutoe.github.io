@@ -9,12 +9,12 @@ permalink: /posts/Coding_Agent_Estimate/
 
 ## 测试背景
 
-自 Codex 发布 5.6、6 模型以来，token 消耗太快了，因此尝试用本地语言模型执行编程任务。这次测试的两个模型，初步使用下来效果都还行：
+自 Codex 发布 5.6、6 模型以来，token 消耗太快了，因此尝试用本地语言模型执行编程任务。这次测试的两个模型：
 
 - **Qwen-3.8 27B**。
-- **PrimML Bonsai-2 27B**。
+- **PrismML Bonsai-2 27B**。
 
-编程任务来自 [KMesh](https://github.com/zjutoe/KMesh.git) 项目。
+初步使用下来效果都还行。PrismML Bonsai占资源很少，在nvidia 3090显卡上能跑得很流畅。编程任务来自 [KMesh](https://github.com/zjutoe/KMesh.git) 项目。
 
 ## 任务评测方法
 
