@@ -1,21 +1,33 @@
-# 测试用本地语言模型写代码效果
-- 自Codex发布5.6、6模型以来，token消耗太快了
-- QWen-3.8 27B模型效果还行
-- PrimML Bonsai-2 27B模型的效果也还行
-- codig任务：[KMesh](https://github.com/zjutoe/KMesh.git)
+---
+title: 本地语言模型编程能力评测
+description: 由 Codex 规划和审核，以 KMesh 编程任务评测 Qwen 与 Bonsai 本地模型的任务执行完整性和正确性。
+lang: zh-CN
+translation_key: coding-agent-estimate
+category: review
+permalink: /posts/Coding_Agent_Estimate/
+---
 
-# 任务评测方法
-- 用codex 6 (xhigh) 做任务规划，写好handoff文档
-- 本地模型（QWen或Bonsai）根据handoff文档执行，并根据要求自行检验
-- codex审核本地模型的执行结果，需要返工时给出提示
-- 需要返工时把codex的审核结果贴给本地模型
-- 直到codex审核任务通过
-- 让codex评估整轮下来，本地模型的任务执行完整性、正确性
+## 测试背景
 
-# QWen评测结果
+自 Codex 发布 5.6、6 模型以来，token 消耗太快了，因此尝试用本地语言模型执行编程任务。这次测试的两个模型，初步使用下来效果都还行：
 
-![QWen评测结果](assets/images/qwen_estimage.png)
+- **Qwen-3.8 27B**。
+- **PrimML Bonsai-2 27B**。
 
-# Bonsai评测结果
+编程任务来自 [KMesh](https://github.com/zjutoe/KMesh.git) 项目。
 
-![Bonsai评测结果](assets/images/bonsai_estimage.png)
+## 任务评测方法
+
+1. 用 **Codex 6（xhigh）** 做任务规划，写好 handoff（任务交接）文档。
+2. 本地模型（Qwen 或 Bonsai）根据 handoff 文档执行任务，并按要求自行检验。
+3. Codex 审核本地模型的执行结果，需要返工时给出修改提示。
+4. 将审核结果交给本地模型返工，再提交 Codex 审核，直到任务通过。
+5. 让 Codex 评估整轮执行中，本地模型完成任务的**完整性**和**正确性**。
+
+## Qwen 评测结果
+
+![Qwen 编程任务评测结果截图](/assets/images/coding_agent_estimate/qwen_estimate.png)
+
+## Bonsai 评测结果
+
+![Bonsai 编程任务评测结果截图](/assets/images/coding_agent_estimate/bonsai_estimate.png)
