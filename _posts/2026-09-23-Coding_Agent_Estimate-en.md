@@ -11,8 +11,8 @@ permalink: /en/posts/Coding_Agent_Estimate/
 
 Since Codex released its 5.6 and 6 models, token consumption has been too high, so I tried using local language models for coding tasks. The two models tested were:
 
-- **Qwen-3.8 27B**.
-- **PrismML Bonsai-2 27B**.
+- [**Qwen-3.8 27B**](https://huggingface.co/Qwen/Qwen3.8-27B)。
+- [**PrismML Bonsai-2 27B**](https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf)。
 
 Both models worked reasonably well in initial use. PrismML Bonsai has a small resource footprint and runs smoothly on an NVIDIA 3090 GPU. The coding tasks come from the [KMesh](https://github.com/zjutoe/KMesh.git) project.
 
