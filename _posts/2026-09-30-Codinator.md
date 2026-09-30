@@ -27,7 +27,7 @@ Codex 使用强模型负责需求分析、任务规划与独立验收，Pi 调�
 `pi`、`codex`、`git`、`bwrap`；Python 运行时无第三方依赖。
 Pi 通过 RPC 执行实施任务，Codex 通过独立审查进程验收，均由控制器调度。
 
-## 工作流程：执行与恢复
+## 工作流程
 
 ```text
 ready → implementing → checking → reviewing → accepted

@@ -27,7 +27,7 @@ Codinator targets Linux, with a single user and tasks running serially. It requi
 `pi`, `codex`, `git`, and `bwrap`, with authentication configured where needed. The Python runtime has no third-party dependencies.
 Pi performs implementation tasks through RPC, while Codex handles acceptance through a separate review process; both are scheduled by the controller.
 
-## Workflow: Execution and Recovery
+## Workflow
 
 ```text
 ready → implementing → checking → reviewing → accepted
